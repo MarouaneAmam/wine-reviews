@@ -1,0 +1,67 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <h1 class="page-title">Wine Reviews</h1>
+
+  <form method="get" action="/" class="search-form">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search..."
+      value="{{ filters.q }}"
+    >
+
+    <select name="domain_id">
+      <option value="">All domains</option>
+      {% for d in domains %}
+        <option value="{{ d.id }}" {% if filters.domain_id == d.id %}selected{% endif %}>
+          {{ d.name }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<!-- WINE LIST -->
+<div class="content">
+
+  {% if wines.length == 0 %}
+    <p class="empty">No wines found.</p>
+  {% else %}
+    <ul class="wine-list">
+
+      {% for w in wines %}
+        <!-- 👇 THIS IS WHERE YOUR <li> GOES -->
+        <li class="wine-card">
+          <img src="/img/bottle.jpg" alt="Wine bottle" class="wine-img">
+
+          <div class="wine-info">
+            <strong>
+              <a href="/wines/{{ w.id }}">
+                {{ w.name }}{% if w.year %} ({{ w.year }}){% endif %}
+              </a>
+            </strong><br>
+
+            <span class="meta">
+              {{ w.domain_name }}
+              {% if w.avg_rating %}
+                ⭐ {{ w.avg_rating }}/5
+              {% else %}
+                — No reviews yet
+              {% endif %}
+            </span>
+          </div>
+        </li>
+      {% endfor %}
+
+    </ul>
+  {% endif %}
+
+</div>
+
+{% endblock %}

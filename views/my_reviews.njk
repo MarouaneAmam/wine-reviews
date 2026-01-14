@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>My reviews</h1>
+
+{% if reviews.length == 0 %}
+  <p>You haven’t written any review yet.</p>
+{% else %}
+  <ul>
+    {% for r in reviews %}
+      <li>
+        <strong>
+          <a href="/wines/{{ r.wine_id }}">
+            {{ r.wine_name }}
+            {% if r.wine_year %}({{ r.wine_year }}){% endif %}
+          </a>
+        </strong>
+        — ⭐ {{ r.rating }} / 5
+        <br>
+        {{ r.comment }}
+        <br>
+        <small>{{ r.created_at }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

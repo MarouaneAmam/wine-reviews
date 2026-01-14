@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>Admin — Domains</h1>
+
+<p>
+  <a href="/admin/domains/new">➕ Add new domain</a>
+</p>
+
+{% if domains.length == 0 %}
+  <p>No domains yet.</p>
+{% else %}
+  <ul>
+    {% for d in domains %}
+      <li>
+        <strong>{{ d.name }}</strong>
+        {% if d.region %} — {{ d.region }}{% endif %}
+        {% if d.country %} ({{ d.country }}){% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

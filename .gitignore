@@ -1,0 +1,20 @@
+# Node
+node_modules/
+
+# Base de données locale
+database.sqlite
+database.sqlite-shm
+database.sqlite-wal
+
+# Environnement
+.env
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

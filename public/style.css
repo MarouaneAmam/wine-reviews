@@ -1,0 +1,429 @@
+/* =========================================
+   WINE REVIEWS — LUXURY THEME (Burgundy + Gold)
+   Images used:
+   /img/hero.jpg   (wine cellar shelves)
+   /img/corks.jpg  (corks)
+   /img/bottle.jpg (bottle)
+========================================= */
+
+:root{
+  --bg-0:#060308;
+  --bg-1:#12060c;
+  --bg-2:#1a0a12;
+
+  --wine:#4a0f22;
+  --wine-2:#2b0b16;
+
+  --gold:#d4af37;
+  --gold-2:#a8842b;
+
+  --text:#f2f2f2;
+  --muted:#c9c1c6;
+
+  --card: rgba(255,255,255,0.06);
+  --card-2: rgba(255,255,255,0.10);
+  --border: rgba(212,175,55,0.18);
+
+  --shadow: 0 18px 55px rgba(0,0,0,0.45);
+  --radius: 18px;
+}
+
+*{ box-sizing:border-box; }
+
+html, body{
+  height:100%;
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+  /* Background: cellar hero + luxury overlay */
+  background:
+    radial-gradient(circle at 15% 20%, rgba(212,175,55,0.18), transparent 35%),
+    radial-gradient(circle at 85% 15%, rgba(90,10,30,0.40), transparent 40%),
+    linear-gradient(135deg, rgba(0,0,0,0.72), rgba(20,6,12,0.86)),
+    url("/img/hero.jpg") center / cover fixed no-repeat;
+}
+
+/* Subtle moving shine */
+@keyframes sheen {
+  0% { transform: translateX(-40%) rotate(10deg); opacity: 0.0; }
+  40%{ opacity: 0.25; }
+  100% { transform: translateX(40%) rotate(10deg); opacity: 0.0; }
+}
+
+a{
+  color: var(--gold);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/* =========================================
+   NAVBAR (modern + aligned)
+========================================= */
+
+.navbar{
+  position: sticky;
+  top:0;
+  z-index: 100;
+
+  background:
+    linear-gradient(135deg, rgba(30,10,18,0.92), rgba(10,6,10,0.92));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.navbar .inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--gold);
+  text-decoration:none;
+  user-select: none;
+}
+
+.brand:hover{ text-decoration:none; }
+
+.brand-badge{
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+
+  background:
+    radial-gradient(circle at 30% 25%, #fff3b0, var(--gold), var(--gold-2));
+  box-shadow: 0 0 18px rgba(212,175,55,0.55);
+  position: relative;
+  overflow:hidden;
+}
+
+.brand-badge::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width: 120%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: rotate(10deg);
+  animation: sheen 5.5s ease-in-out infinite;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+/* Pills */
+.pill{
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text);
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  text-decoration:none;
+
+  transition: transform 0.20s ease, background 0.20s ease, border-color 0.20s ease, box-shadow 0.20s ease;
+}
+
+.pill:hover{
+  transform: translateY(-1px);
+  background: rgba(212,175,55,0.16);
+  border-color: rgba(212,175,55,0.35);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+  text-decoration:none;
+}
+
+.pill.primary{
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #12080c;
+  border-color: rgba(212,175,55,0.60);
+  font-weight: 700;
+}
+
+.pill.success{
+  background: rgba(40,160,100,0.25);
+  border-color: rgba(40,160,100,0.55);
+}
+
+.pill.danger{
+  background: rgba(190,70,70,0.25);
+  border-color: rgba(190,70,70,0.60);
+}
+
+/* On small screens, keep it usable */
+@media (max-width: 700px){
+  .navbar .inner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links{
+    width: 100%;
+    justify-content:flex-start;
+  }
+}
+
+/* =========================================
+   LAYOUT CONTAINER
+========================================= */
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 34px 22px 60px;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+  padding: 28px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.42), rgba(65,8,28,0.20)),
+    url("/img/corks.jpg") center / cover no-repeat;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background: radial-gradient(circle at 25% 15%, rgba(212,175,55,0.22), transparent 40%);
+  pointer-events:none;
+}
+
+.page-title{
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.6px;
+}
+
+.subtle{
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+/* =========================================
+   SEARCH FORM
+========================================= */
+
+.search-form{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.search-form input,
+.search-form select{
+  height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  outline: none;
+}
+
+.search-form input{
+  min-width: 220px;
+  flex: 1 1 240px;
+}
+
+.search-form select{
+  min-width: 180px;
+  flex: 0 0 200px;
+}
+
+.search-form button{
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.55);
+
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #12080c;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.search-form button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+
+/* =========================================
+   CONTENT + LIST
+========================================= */
+
+.content{
+  margin-top: 22px;
+}
+
+.empty{
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.22);
+  color: var(--muted);
+}
+
+.wine-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+/* Wine card */
+.wine-card{
+  display:flex;
+  gap: 14px;
+  align-items:center;
+
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.28);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.wine-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(212,175,55,0.35);
+  background: rgba(0,0,0,0.34);
+}
+
+.wine-img{
+  width: 62px;
+  height: 62px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
+
+.wine-info{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wine-info strong a{
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.wine-info strong a:hover{
+  text-decoration: underline;
+  color: #fff;
+}
+
+.meta{
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   GENERIC FORMS (login/register/admin)
+========================================= */
+
+form{
+  max-width: 680px;
+}
+
+label{
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select{
+  width: min(680px, 100%);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  outline:none;
+}
+
+textarea{
+  min-height: 110px;
+}
+
+button{
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.55);
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #12080c;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+hr{
+  border: 0;
+  height: 1px;
+  background: rgba(212,175,55,0.18);
+  margin: 18px 0;
+}
+
+/* Small helpers */
+.small{ font-size: 0.92rem; color: var(--muted); }
+.star{ color: var(--gold); }
+
+/* =========================================
+   WINE DETAIL PAGE POLISH
+========================================= */
+
+h1, h2, h3{
+  letter-spacing: 0.3px;
+}
+
+ul{
+  margin: 10px 0;
+}
+
+li{
+  line-height: 1.45;
+}

@@ -1,0 +1,50 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>Add a new wine</h1>
+
+{% if domains.length == 0 %}
+  <p>You must create a domain first.</p>
+  <p><a href="/admin/domains/new">➕ Add a domain</a></p>
+{% else %}
+
+<form method="post" action="/admin/wines/new">
+
+  <div>
+    <label>Domain</label><br>
+    <select name="domain_id" required>
+      {% for d in domains %}
+        <option value="{{ d.id }}">{{ d.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label>Wine name</label><br>
+    <input type="text" name="name" required>
+  </div>
+
+  <div>
+    <label>Year</label><br>
+    <input type="number" name="year" min="1900" max="2100">
+  </div>
+
+  <div>
+    <label>Grape</label><br>
+    <input type="text" name="grape">
+  </div>
+
+  <div>
+    <label>Description (Markdown)</label><br>
+    <textarea name="description_md" rows="6" placeholder="Write in Markdown..."></textarea>
+  </div>
+
+  <br>
+  <button type="submit">Create wine</button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}

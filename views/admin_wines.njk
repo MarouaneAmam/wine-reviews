@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>Admin — Wines</h1>
+
+<p>
+  <a href="/admin/wines/new">➕ Add new wine</a>
+</p>
+
+{% if wines.length == 0 %}
+  <p>No wines yet.</p>
+{% else %}
+  <ul>
+    {% for w in wines %}
+      <li>
+        <strong>{{ w.name }}</strong>
+        {% if w.year %} ({{ w.year }}){% endif %}
+        — {{ w.domain_name }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

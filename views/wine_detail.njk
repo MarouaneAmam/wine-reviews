@@ -1,0 +1,77 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>{{ wine.name }} {% if wine.year %}({{ wine.year }}){% endif %}</h1>
+
+<p>
+  <strong>Domain:</strong> {{ wine.domain_name }}<br>
+  {% if wine.region %}<strong>Region:</strong> {{ wine.region }}<br>{% endif %}
+  {% if wine.country %}<strong>Country:</strong> {{ wine.country }}<br>{% endif %}
+  {% if wine.grape %}<strong>Grape:</strong> {{ wine.grape }}{% endif %}
+</p>
+
+{% if description_html %}
+  <h3>Description</h3>
+  <div>{{ description_html | safe }}</div>
+{% endif %}
+
+<hr>
+
+<h2>Reviews</h2>
+
+{% if stats.count > 0 %}
+  <p>Average rating: ⭐ {{ stats.avg }} / 5 ({{ stats.count }} reviews)</p>
+{% else %}
+  <p>No reviews yet.</p>
+{% endif %}
+
+<ul>
+  {% for r in reviews %}
+    <li>
+      <strong>{{ r.username }}</strong>
+      — ⭐ {{ r.rating }} / 5
+      <br>
+      {{ r.comment }}
+      <br>
+      <small>{{ r.created_at }}</small>
+
+      {% if user and (user.id == r.user_id or user.role == "admin") %}
+        <form method="post" action="/reviews/{{ r.id }}/delete">
+          <button type="submit">Delete</button>
+        </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+{% if user %}
+  <h3>Your review</h3>
+
+  <form method="post" action="/wines/{{ wine.id }}/review">
+    <label>Rating (1–5)</label><br>
+    <input
+      type="number"
+      name="rating"
+      min="1"
+      max="5"
+      required
+      value="{{ myReview.rating if myReview }}"
+    >
+    <br><br>
+
+    <label>Comment</label><br>
+    <textarea name="comment" rows="4">{{ myReview.comment if myReview }}</textarea>
+    <br><br>
+
+    <button type="submit">
+      {% if myReview %}Update review{% else %}Submit review{% endif %}
+    </button>
+  </form>
+{% else %}
+  <p><a href="/login">Login</a> to leave a review.</p>
+{% endif %}
+
+{% endblock %}

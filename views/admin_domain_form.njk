@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<h1>Add a new domain</h1>
+
+<form method="post" action="/admin/domains/new">
+
+  <div>
+    <label>Domain name</label><br>
+    <input type="text" name="name" required>
+  </div>
+
+  <div>
+    <label>Region</label><br>
+    <input type="text" name="region">
+  </div>
+
+  <div>
+    <label>Country</label><br>
+    <input type="text" name="country">
+  </div>
+
+  <br>
+  <button type="submit">Create domain</button>
+
+</form>
+
+{% endblock %}
