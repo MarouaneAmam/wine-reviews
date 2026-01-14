@@ -1,55 +1,56 @@
-# 🍷 Wine Reviews
+🍷 Wine Reviews
 
-A **Server-Side Rendering (SSR)** web application built with **Node.js, Express, and SQLite**.  
-It allows users to browse wines, filter by domain, and leave reviews.
+A Server-Side Rendering (SSR) web application built with Node.js, Express, and SQLite.
+This project allows users to browse wines, filter by domain, and leave reviews (ratings + comments).
 
----
+🎯 Project Description
 
-## 🎯 Project Description
+Wine Reviews is an educational web application created to demonstrate a complete full-stack web architecture:
 
-Wine Reviews is an educational web application designed to:
-- manage a wine database
-- handle user authentication
-- distinguish between **user** and **admin** roles
-- demonstrate a complete web architecture (backend + frontend + database)
+Backend with Node.js and Express
 
-Pages are rendered **server-side** (SSR), without using a frontend framework.
+Server-side rendered frontend using Nunjucks
 
----
+Local relational database with SQLite
 
-## ✨ Features
+Authentication and role management (User / Admin)
 
-### 👤 User
-- Search wines (name / domain)
-- Filter by domain
-- View wine details
-- Add / edit / delete reviews (rating 1 to 5)
-- **My reviews** page
+The application does not use a frontend framework. All pages are rendered on the server.
 
-### 🔐 Admin
-- Manage domains (CRUD)
-- Manage wines (CRUD)
-- Wine descriptions written in **Markdown**
-- Protected routes (Admin only)
+✨ Features
+👤 User Features
 
----
+Search wines by name or domain
 
-## 🧱 Architecture
+Filter wines by domain
+
+View detailed wine pages
+
+Add, edit, and delete reviews (rating from 1 to 5)
+
+Personal page: My Reviews
+
+🔐 Admin Features
+
+Create, edit, and delete domains
+
+Create, edit, and delete wines
+
+Write wine descriptions using Markdown
+
+Access protected admin pages (Admin only)
+
+🧱 Application Architecture
 
 Browser
 ↓
-Nunjucks (SSR)
+Nunjucks templates (SSR)
 ↓
-Express (Node.js)
+Express (Node.js backend)
 ↓
-SQLite
+SQLite database
 
-yaml
-Copier le code
-
----
-
-## 🗂️ Project Structure
+🗂️ Project Structure
 
 wine-reviews/
 ├── app.js
@@ -61,6 +62,9 @@ wine-reviews/
 ├── public/
 │ ├── style.css
 │ └── img/
+│ ├── bottle.jpg
+│ ├── corks.jpg
+│ └── hero.jpg
 └── views/
 ├── layout.njk
 ├── index.njk
@@ -69,79 +73,85 @@ wine-reviews/
 ├── wine_detail.njk
 ├── my_reviews.njk
 ├── admin_domains.njk
-└── admin_wines.njk
+├── admin_domain_form.njk
+├── admin_wines.njk
+└── admin_wine_form.njk
 
-yaml
-Copier le code
+🛠️ Technologies Used
 
----
+Node.js
 
-## 🛠️ Technologies Used
+Express
 
-- Node.js
-- Express
-- Nunjucks
-- SQLite
-- express-session
-- bcrypt
-- showdown
-- nodemon
+Nunjucks (SSR templates)
 
----
+SQLite
 
-## 🚀 Installation
+express-session
 
-```bash
+bcrypt
+
+showdown (Markdown to HTML)
+
+nodemon (development)
+
+🚀 Installation
+
+Install Node.js (LTS)
+
+Clone the repository
+
+Install dependencies:
+
 npm install
+
 ▶️ Run the Application
-bash
-Copier le code
+
+Development mode (auto-reload):
+
 npm run dev
-Then open:
 
-arduino
-Copier le code
+Then open your browser at:
+
 http://localhost:3000
-🔐 Admin Access
-Create a user account
 
-Edit the make_admin.js file
+🔐 Admin Access
+
+Register a user via /register
+
+Open make_admin.js
+
+Set your username inside the file
 
 Run:
 
-bash
-Copier le code
 node make_admin.js
+
 Log in again → Admin access enabled
 
 🔗 Main Routes
-/ : Home
 
-/login : Login
+/ → Home
 
-/register : Register
+/login → Login
 
-/me/reviews : My reviews
+/register → Register
 
-/admin/domains : Domain management
+/me/reviews → User reviews
 
-/admin/wines : Wine management
+/admin/domains → Domain management
+
+/admin/wines → Wine management
 
 📌 Notes
-node_modules is ignored via .gitignore
 
-Database is local (SQLite)
+node_modules is excluded using .gitignore
 
-Educational project
+The database is local (SQLite)
+
+This is an educational / academic project
 
 👤 Author
+
 Marouane Amam
 University project – Node.js / Express / SQLite
-
-yaml
-Copier le code
-
----
-
-### 3️⃣ Click **Commit changes**
-Commit message:
