@@ -1,191 +1,80 @@
-🍷 Wine Reviews
+# 🍷 Wine Reviews
 
-A Server-Side Rendering (SSR) web application built with Node.js, Express, and SQLite.
-The platform allows users to browse wines, filter them by domain, and leave reviews (ratings and comments).
+Wine Reviews is a full-stack web application that allows users to browse and consult wine reviews through a simple and clean interface. The project also includes an admin side that enables the management of wines and their associated categories (domains). It was developed as a personal portfolio project to practice backend development, database integration, and basic content management.
 
-This project was developed as an academic full-stack web application, focusing on backend logic, database management, and server-rendered views.
+The application displays a list of wines on the home page and provides dedicated pages for detailed wine reviews. An admin dashboard allows authorized users to add new wines and manage wine domains. All data is stored and managed using a MongoDB database.
 
-📌 Project Overview
+The project is built with Node.js and Express for the backend, MongoDB for data persistence (local or Atlas), and EJS templates with CSS for the frontend. Git and GitHub are used for version control, and the project was developed using Visual Studio Code.
 
-Wine Reviews is a complete CRUD-based web application with authentication and role management.
+Below are some screenshots illustrating the main functionalities of the application.
 
-It demonstrates:
+Home page showing the wine list:
+<p align="center">
+  <img src="assets/screenshots/home.png" width="800" />
+</p>
 
-Backend development with Express
+Wine review detail page:
+<p align="center">
+  <img src="assets/screenshots/wine-review.png" width="800" />
+</p>
 
-Server-side rendering with Nunjucks
+Admin page to add a new wine:
+<p align="center">
+  <img src="assets/screenshots/add-wine.png" width="800" />
+</p>
 
-Persistent storage using SQLite
+Admin page to manage wine domains:
+<p align="center">
+  <img src="assets/screenshots/add-domain.png" width="800" />
+</p>
 
-User authentication and authorization (User / Admin)
+To run the project locally, clone the repository and move into the project directory:
 
-No frontend framework is used — all pages are rendered on the server.
+```bash
+git clone https://github.com/MarouaneAmam/wine-reviews.git
+cd wine-reviews
+Install the required dependencies:
 
-✨ Features
-👤 User Features
-
-Search wines by name, domain, or grape
-
-Filter wines by domain
-
-View detailed wine pages
-
-Add, edit, and delete reviews (rating from 1 to 5)
-
-View personal reviews in My Reviews
-
-🔐 Admin Features
-
-Create, edit, and delete wine domains
-
-Create, edit, and delete wines
-
-Write wine descriptions using Markdown
-
-Access restricted admin pages (Admin only)
-
-🧱 Application Architecture
-
-Client (Browser)
-→ Server-side templates (Nunjucks)
-→ Express backend (Node.js)
-→ SQLite database
-
-The application follows a simple MVC-like architecture:
-
-Views: Nunjucks templates
-
-Controllers: Express routes
-
-Model: SQLite database
-
-🗂️ Project Structure
-
-wine-reviews
-
-app.js → Main server and routes
-
-db.js → Database connection and queries
-
-make_admin.js → Script to promote a user to admin
-
-database.sqlite → SQLite database
-
-package.json → Project configuration and dependencies
-
-package-lock.json → Dependency lock file
-
-public
-
-style.css → Global styling
-
-img → Images used by the site
-
-views
-
-layout.njk → Base layout
-
-index.njk → Home page
-
-login.njk → Login page
-
-register.njk → Registration page
-
-wine_detail.njk → Wine detail page
-
-my_reviews.njk → User reviews
-
-admin_domains.njk → Admin domain list
-
-admin_domain_form.njk → Domain form
-
-admin_wines.njk → Admin wine list
-
-admin_wine_form.njk → Wine form
-
-🛠️ Technologies Used
-
-Node.js
-
-Express
-
-Nunjucks (SSR templating)
-
-SQLite
-
-express-session
-
-bcrypt (password hashing)
-
-showdown (Markdown rendering)
-
-nodemon (development auto-reload)
-
-🚀 Installation
-
-Install Node.js (LTS)
-
-Clone the repository
-
-Install dependencies:
-
+bash
+Copy code
 npm install
+Create a .env file at the root of the project and define the following environment variables:
 
-▶️ Run the Application
+env
+Copy code
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/winereviews
+If you are using MongoDB Atlas, replace the MongoDB URI with your own Atlas connection string.
 
-Development mode (automatic reload):
+Start the application with:
 
-npm run dev
+bash
+Copy code
+npm start
+Once the server is running, open your browser and navigate to:
 
-Open in your browser:
-
+arduino
+Copy code
 http://localhost:3000
+The project follows a clear and modular structure that separates routes, views, models, and static assets to keep the codebase organized and maintainable:
 
-🔐 Admin Setup
+text
+Copy code
+wine-reviews/
+├── assets/
+│   └── screenshots/
+├── public/
+├── views/
+├── routes/
+├── models/
+├── app.js / server.js
+├── .env
+├── package.json
+└── README.md
+This project was developed to demonstrate full-stack web development fundamentals. Possible future improvements include user authentication, advanced search and filtering features, cloud deployment, and automated testing.
 
-Create a user account from /register
+Author: Marouane Amam
+Master 2 CCI – Distributed Information Systems & Networks (SIRR)
+LinkedIn: https://www.linkedin.com/in/amam-marouane
 
-Open make_admin.js
-
-Replace the username with your own
-
-Run:
-
-node make_admin.js
-
-Log in again — admin access is now enabled
-
-🔗 Main Routes
-
-/ → Home page
-
-/login → Login
-
-/register → Register
-
-/me/reviews → User reviews
-
-/admin/domains → Manage domains
-
-/admin/wines → Manage wines
-
-📸 Screenshots (Optional)
-
-You can add screenshots by creating a screenshots/ folder and inserting:
-
-
-
-
-📌 Notes
-
-node_modules is excluded via .gitignore
-
-SQLite database is local
-
-Designed for learning and demonstration purposes
-
-👤 Author
-
-Marouane Amam
-Academic project — Full-Stack Web Development
-Node.js • Express • SQLite
+If you find this project useful or interesting, feel free to star the repository.
