@@ -35,31 +35,21 @@ git clone https://github.com/MarouaneAmam/wine-reviews.git
 cd wine-reviews
 Install the required dependencies:
 
-bash
-Copy code
 npm install
 Create a .env file at the root of the project and define the following environment variables:
 
-env
-Copy code
 PORT=3000
 MONGO_URI=mongodb://127.0.0.1:27017/winereviews
 If you are using MongoDB Atlas, replace the MongoDB URI with your own Atlas connection string.
 
 Start the application with:
 
-bash
-Copy code
 npm start
 Once the server is running, open your browser and navigate to:
 
-arduino
-Copy code
 http://localhost:3000
 The project follows a clear and modular structure that separates routes, views, models, and static assets to keep the codebase organized and maintainable:
 
-text
-Copy code
 wine-reviews/
 ├── assets/
 │   └── screenshots/
