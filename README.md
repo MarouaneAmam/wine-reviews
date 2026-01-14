@@ -1,26 +1,30 @@
 🍷 Wine Reviews
 
 A Server-Side Rendering (SSR) web application built with Node.js, Express, and SQLite.
-This project allows users to browse wines, filter by domain, and leave reviews (ratings + comments).
+The platform allows users to browse wines, filter them by domain, and leave reviews (ratings and comments).
 
-🎯 Project Description
+This project was developed as an academic full-stack web application, focusing on backend logic, database management, and server-rendered views.
 
-Wine Reviews is an educational web application created to demonstrate a complete full-stack web architecture:
+📌 Project Overview
 
-Backend with Node.js and Express
+Wine Reviews is a complete CRUD-based web application with authentication and role management.
 
-Server-side rendered frontend using Nunjucks
+It demonstrates:
 
-Local relational database with SQLite
+Backend development with Express
 
-Authentication and role management (User / Admin)
+Server-side rendering with Nunjucks
 
-The application does not use a frontend framework. All pages are rendered on the server.
+Persistent storage using SQLite
+
+User authentication and authorization (User / Admin)
+
+No frontend framework is used — all pages are rendered on the server.
 
 ✨ Features
 👤 User Features
 
-Search wines by name or domain
+Search wines by name, domain, or grape
 
 Filter wines by domain
 
@@ -28,54 +32,76 @@ View detailed wine pages
 
 Add, edit, and delete reviews (rating from 1 to 5)
 
-Personal page: My Reviews
+View personal reviews in My Reviews
 
 🔐 Admin Features
 
-Create, edit, and delete domains
+Create, edit, and delete wine domains
 
 Create, edit, and delete wines
 
 Write wine descriptions using Markdown
 
-Access protected admin pages (Admin only)
+Access restricted admin pages (Admin only)
 
 🧱 Application Architecture
 
-Browser
-↓
-Nunjucks templates (SSR)
-↓
-Express (Node.js backend)
-↓
-SQLite database
+Client (Browser)
+→ Server-side templates (Nunjucks)
+→ Express backend (Node.js)
+→ SQLite database
+
+The application follows a simple MVC-like architecture:
+
+Views: Nunjucks templates
+
+Controllers: Express routes
+
+Model: SQLite database
 
 🗂️ Project Structure
 
-wine-reviews/
-├── app.js
-├── db.js
-├── make_admin.js
-├── database.sqlite
-├── package.json
-├── package-lock.json
-├── public/
-│ ├── style.css
-│ └── img/
-│ ├── bottle.jpg
-│ ├── corks.jpg
-│ └── hero.jpg
-└── views/
-├── layout.njk
-├── index.njk
-├── login.njk
-├── register.njk
-├── wine_detail.njk
-├── my_reviews.njk
-├── admin_domains.njk
-├── admin_domain_form.njk
-├── admin_wines.njk
-└── admin_wine_form.njk
+wine-reviews
+
+app.js → Main server and routes
+
+db.js → Database connection and queries
+
+make_admin.js → Script to promote a user to admin
+
+database.sqlite → SQLite database
+
+package.json → Project configuration and dependencies
+
+package-lock.json → Dependency lock file
+
+public
+
+style.css → Global styling
+
+img → Images used by the site
+
+views
+
+layout.njk → Base layout
+
+index.njk → Home page
+
+login.njk → Login page
+
+register.njk → Registration page
+
+wine_detail.njk → Wine detail page
+
+my_reviews.njk → User reviews
+
+admin_domains.njk → Admin domain list
+
+admin_domain_form.njk → Domain form
+
+admin_wines.njk → Admin wine list
+
+admin_wine_form.njk → Wine form
 
 🛠️ Technologies Used
 
@@ -83,17 +109,17 @@ Node.js
 
 Express
 
-Nunjucks (SSR templates)
+Nunjucks (SSR templating)
 
 SQLite
 
 express-session
 
-bcrypt
+bcrypt (password hashing)
 
-showdown (Markdown to HTML)
+showdown (Markdown rendering)
 
-nodemon (development)
+nodemon (development auto-reload)
 
 🚀 Installation
 
@@ -107,31 +133,31 @@ npm install
 
 ▶️ Run the Application
 
-Development mode (auto-reload):
+Development mode (automatic reload):
 
 npm run dev
 
-Then open your browser at:
+Open in your browser:
 
 http://localhost:3000
 
-🔐 Admin Access
+🔐 Admin Setup
 
-Register a user via /register
+Create a user account from /register
 
 Open make_admin.js
 
-Set your username inside the file
+Replace the username with your own
 
 Run:
 
 node make_admin.js
 
-Log in again → Admin access enabled
+Log in again — admin access is now enabled
 
 🔗 Main Routes
 
-/ → Home
+/ → Home page
 
 /login → Login
 
@@ -139,19 +165,27 @@ Log in again → Admin access enabled
 
 /me/reviews → User reviews
 
-/admin/domains → Domain management
+/admin/domains → Manage domains
 
-/admin/wines → Wine management
+/admin/wines → Manage wines
+
+📸 Screenshots (Optional)
+
+You can add screenshots by creating a screenshots/ folder and inserting:
+
+
+
 
 📌 Notes
 
-node_modules is excluded using .gitignore
+node_modules is excluded via .gitignore
 
-The database is local (SQLite)
+SQLite database is local
 
-This is an educational / academic project
+Designed for learning and demonstration purposes
 
 👤 Author
 
 Marouane Amam
-University project – Node.js / Express / SQLite
+Academic project — Full-Stack Web Development
+Node.js • Express • SQLite
